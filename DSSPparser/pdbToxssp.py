@@ -15,17 +15,24 @@ REST_URL = "https://www3.cmbi.umcn.nl/xssp/"
 inputCollection = ["pdb_id", "pdb_redo_id", "pdb_file", "sequence"]
 outputCollection = ["hssp_hssp", "hssp_stockholm", "dssp"]
 
-def pdbToxssp_local(_input, inputF="pdb", output_dir='./'):
+def pdbToxssp_local(_input, input_type="pdb_id", inputF="pdb", output_dir='./'):
     '''transform PDB to xssp
-    
+
     Arguments:
         _input {str} -- PDB id
-    
+        _input {str} -- PDB file path
+
     Keyword Arguments:
         inputF {str} -- input format (default: {"pdb"})
     '''
-    pdbl = PDBList()
-    native_pdb = pdbl.retrieve_pdb_file(_input, pdir=output_dir, file_format=inputF)
+    if input_type == "pdb_id":
+        pdbl = PDBList()
+        native_pdb = pdbl.retrieve_pdb_file(_input, pdir=output_dir, file_format=inputF)
+    elif input_type == "pdb_file":
+        native_pdb = _input
+    else:
+        print("You have entered an incorrect input_type. Either enter 'pdb_id' or 'pdb_file' and try again.")
+
     if shutil.which('mkdssp'):
         command = f"mkdssp -i {native_pdb} -o {_input}.dssp"
         os.system(command)
@@ -35,17 +42,17 @@ def pdbToxssp_local(_input, inputF="pdb", output_dir='./'):
 
 def pdbToxssp(_input, inputF="pdb_id", outputF="dssp"):
     '''transform PDB to xssp
-    
+
     Arguments:
         _input {str} -- input id or PDB file
-    
+
     Keyword Arguments:
         inputF {str} -- input format (default: {"pdb_id"})
         outputF {str} -- output format (default: {"dssp"})
-    
+
     Raises:
         Exception -- raise format error
-    
+
     Returns:
         str -- dssp or hssp format
     '''
