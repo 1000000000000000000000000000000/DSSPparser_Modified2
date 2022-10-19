@@ -1,5 +1,7 @@
 # DSSPparser
 
+#NOTE: THIS IS NOT 1000000000000000000000000000000's code. Copied and slightly modified from neolei's DSSPparser
+
 [![PyPI - Version](https://img.shields.io/pypi/v/DSSPparser.svg?style=flat)](https://pypi.org/project/DSSPparser/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/DSSPparser.svg)](https://pypi.org/project/DSSPparser/)
 [![GitHub - LICENSE](https://img.shields.io/github/license/neolei/DSSPparser.svg?style=flat)](./LICENSE.txt)
@@ -10,14 +12,14 @@
 DSSPparser is an easy tool to parse dssp file, and can transform PDB format file to dssp format file by [dssp](https://anaconda.org/salilab/dssp),also support the tansfrom between the PDB id and dssp format, hssp format and sequence.
 
 ## Install 
-stabel verison
+stable verison
 ```
 pip install DSSPparser
 ```
 lastest version
 
 ```
-pip install git+https://github.com/neolei/DSSPparser.git
+pip install git+https://github.com/1000000000000000000000000000000/DSSPparser_Modified2.git
 ```
 
 ## Examples
@@ -39,8 +41,8 @@ conda install -c salilab dssp
 ```
 
 ```
-from DSSPparser import pdbToxssp_local
-result = pdbToxssp_local("2GW9")
+from DSSPparser import pdbToxssp_local2
+result = pdbToxssp_local2("2GW9")
 ```
 
 ## License
